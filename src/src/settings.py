@@ -134,7 +134,7 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "Chat API",
-    "DESCRIPTION": "Your Project description",
+    "DESCRIPTION": "General Chat API",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": True, 
 }
