@@ -15,7 +15,7 @@ const PrimaryDraw = () => {
             easing: theme.transitions.easing.easeInOut,
             duration: theme.transitions.duration.enteringScreen,
         }),
-        overflowX: "hidden",
+
     });
 
     const closedMixin = () => ({
@@ -23,7 +23,7 @@ const PrimaryDraw = () => {
             easing: theme.transitions.easing.easeInOut,
             duration: theme.transitions.duration.enteringScreen,
         }),
-        overflowX: "hidden",
+
         width: theme.primaryDraw.closed,
     });
 

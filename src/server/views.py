@@ -3,15 +3,18 @@ from django.db.models import Count
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError, AuthenticationFailed
+from rest_framework.permissions import IsAuthenticated
 from .models import Server
 from .serializer import ServerSerializer
 from .schema import server_list_docs
+
 
 
 # Create your views here.
 class ServerListViewSet(viewsets.ViewSet):
     # ViewSet for listing servers based on certain query parameters.
     queryset = Server.objects.all()  # Retrieves all Server objects initially.
+    permission_classes = [IsAuthenticated] # User has to be authenticated in order to access this view
 
     @server_list_docs
     def list(self, request):

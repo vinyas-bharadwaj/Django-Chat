@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
-
+import useAxiosWithInterceptor from "../../helpers/jwtinterceptor";
 
 const SecondaryDraw = () => {
     const theme = useTheme();
