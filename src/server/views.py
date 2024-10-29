@@ -14,7 +14,7 @@ from .schema import server_list_docs
 class ServerListViewSet(viewsets.ViewSet):
     # ViewSet for listing servers based on certain query parameters.
     queryset = Server.objects.all()  # Retrieves all Server objects initially.
-    permission_classes = [IsAuthenticated] # User has to be authenticated in order to access this view
+    # permission_classes = [IsAuthenticated] # User has to be authenticated in order to access this view
 
     @server_list_docs
     def list(self, request):

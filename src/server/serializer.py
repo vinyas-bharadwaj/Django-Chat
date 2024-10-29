@@ -16,6 +16,7 @@ class ServerSerializer(serializers.ModelSerializer):
     
     num_members = serializers.SerializerMethodField()  # Custom field to calculate the number of members.
     channel_server = ChannelSerializer(many=True)  # Nested serializer to include related channels within the server.
+    category = serializers.StringRelatedField() # Returns the name of the category instead of the ID
 
     class Meta:
         model = Server
