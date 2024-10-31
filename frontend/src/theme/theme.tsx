@@ -31,12 +31,23 @@ declare module "@mui/material/styles" {
 
 export const createMuiTheme = () => {
     let theme = createTheme({
+        typography: {
+            body1: {
+                fontWeight: 500, 
+                letterSpacing: "-0.5px"
+            },
+            body2: {
+                fontWeight: 500,
+                fontSize: "15px",
+                letterSpacing: "-0.5px",
+            }
+        },
         primaryAppBar: {
             height: 50,
         },
         primaryDraw: {
             width: 240,
-            closed: 70,
+            closed: 65,
         },
         secondaryDraw: {
             width: 240,

@@ -4,8 +4,9 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError, AuthenticationFailed
 from rest_framework.permissions import IsAuthenticated
-from .models import Server
-from .serializer import ServerSerializer
+from drf_spectacular.utils import extend_schema
+from .models import Server, Category
+from .serializer import ServerSerializer, CategorySerializer
 from .schema import server_list_docs
 
 
@@ -71,3 +72,11 @@ class ServerListViewSet(viewsets.ViewSet):
         # Return the serialized data as a response.
         return Response(serializer.data)
 
+class CategoryListViewSet(viewsets.ViewSet):
+    queryset = Category.objects.all()
+    
+    @extend_schema(responses=CategorySerializer)
+    def list(self, request):
+        serializer = CategorySerializer(self.queryset, many=True)
+        
+        return Response(serializer.data)

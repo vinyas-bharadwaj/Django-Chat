@@ -1,11 +1,17 @@
 import { useTheme } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import useAxiosWithInterceptor from "../../helpers/jwtinterceptor";
+import { ReactNode } from "react";
 
-const SecondaryDraw = () => {
+type SecondaryDrawProps = {
+    children: ReactNode;
+};
+
+
+const SecondaryDraw = ({children}: SecondaryDrawProps) => {
     const theme = useTheme();
 
-    return (
+    return (<>
         <Box sx={{
             minWidth: `${theme.primaryDraw.width}px`, 
             height: `calc(100vh - ${theme.primaryAppBar.height}px)`,
@@ -14,14 +20,11 @@ const SecondaryDraw = () => {
             display: {xs: "none", sm: "block"},
             overflow: "auto",
         }}>
-            {[...Array(100)].map((_, i) => (
-                    <Typography key={i} paragraph>
-                        {i + 1}
-                    </Typography>
-                ))}
-
+            {children}
+            
         </Box>
-    )
+        </>
+    )   
 }
 
 
