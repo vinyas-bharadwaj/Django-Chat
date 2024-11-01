@@ -3,6 +3,7 @@ import { AppBar, Box, Drawer, IconButton, Link, Toolbar, Typography, useMediaQue
 import MenuIcon from "@mui/icons-material/Menu"
 import { useEffect, useState } from "react";
 import ExploreCategories from "../../components/secondaryDraw/ExploreCategories";
+import AccountButton from "../../components/PrimaryAppBar/AccountButton";
 
 const PrimaryAppBar = () => {
     const [sideMenu, setSideMenu] = useState(false);
@@ -23,7 +24,7 @@ const PrimaryAppBar = () => {
     }, [isSmallScreen]);
 
     const toggleDrawer = (open?: boolean) => 
-        (event: React.MouseEvent) => {
+        (_event: React.MouseEvent) => {
             if (open) {
                 setSideMenu(open);
             } else {
@@ -55,6 +56,9 @@ const PrimaryAppBar = () => {
                         DJCHAT
                     </Typography>
                 </Link>
+
+                <Box sx={{ flexGrow: 1 }}></Box>
+                <AccountButton />
 
             </Toolbar>
         </AppBar>

@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     # My apps
     'server',
     'account',
-    
+
     # 3rd party apps
     'rest_framework',
     'drf_spectacular',
@@ -146,3 +146,9 @@ SPECTACULAR_SETTINGS = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173"
 ]
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}

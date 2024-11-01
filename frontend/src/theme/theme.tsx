@@ -24,7 +24,7 @@ declare module "@mui/material/styles" {
             closed: number,
         };
         secondaryDraw: {
-            width:number
+            width: number,
         };
     }
 }
