@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # My apps
     'server',
     'account',
+    'webchat',
 
     # 3rd party apps
     'rest_framework',
