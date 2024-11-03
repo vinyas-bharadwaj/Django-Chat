@@ -17,7 +17,7 @@ const ServerChannels: React.FC<ServerChannelsProps> = ({ data }) => {
     const { serverId } = useParams();
 
     return <>
-        <Box sx={{height: "50px", display: "flex", alignItems: "center", px: 2, borderBottom: `1px solid ${theme.palette.divider}`, position: "sticky", top: 0, backgroundColor: theme.palette.background.default}}>
+        <Box sx={{height: theme.primaryAppBar.height + 1, display: "flex", alignItems: "center", px: 2, borderBottom: `1px solid ${theme.palette.divider}`, position: "sticky", top: 0, backgroundColor: theme.palette.background.default}}>
             <Typography variant="body1" style={{textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap"}}>
                 {server_name}
             </Typography>
