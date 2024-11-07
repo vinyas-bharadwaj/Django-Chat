@@ -6,7 +6,7 @@ interface ScrollProps {
     children: React.ReactNode;
 }
 
-const ScrollContainer = styled(Box)(({theme}) => ({
+const ScrollContainer = styled(Box)(() => ({
     height: `calc(100vh - 190px)`,
     overflowY: "scroll",
     "&::-webkit-scrollbar": {

@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import ServerChannels from "../secondaryDraw/ServerChannels";
 import { useEffect, useState } from "react";
 import MoreVertIcon from "@mui/icons-material/MoreVert"
-import { ThemeContext } from "@emotion/react";
 
 interface ServerChannelProps {
     data: server[];
