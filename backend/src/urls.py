@@ -30,7 +30,6 @@ from rest_framework_simplejwt.views import (
 )
 
 
-
 router = DefaultRouter()
 router.register("api/server/select", ServerListViewSet)
 router.register("api/server/category", CategoryListViewSet)
