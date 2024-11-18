@@ -30,16 +30,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
     # My apps
-    'server',
-    'account',
-    'webchat',
-
+    "server",
+    "account",
+    "webchat",
     # 3rd party apps
-    'rest_framework',
-    'drf_spectacular',
-    'corsheaders',
+    "rest_framework",
+    "drf_spectacular",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -51,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = "src.urls"
@@ -142,15 +141,22 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "Chat API",
     "DESCRIPTION": "General Chat API",
     "VERSION": "1.0.0",
-    "SERVE_INCLUDE_SCHEMA": True, 
+    "SERVE_INCLUDE_SCHEMA": True,
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173"
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173", "http://127.0.0.1:8000"]
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "DELETE",
 ]
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    }
-}
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "authorization",
+]
+
+CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}

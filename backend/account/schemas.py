@@ -11,5 +11,5 @@ user_list_docs = extend_schema(
             location=OpenApiParameter.QUERY,
             description="User ID",
         )
-    ]
+    ],
 )
