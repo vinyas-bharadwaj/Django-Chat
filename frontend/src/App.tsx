@@ -5,9 +5,11 @@ import { createMuiTheme } from "./theme/theme";
 import Explore from "./pages/Explore";
 import Server from "./pages/Server";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import { AuthServiceProvider } from "./context/AuthContext";
 import TestLogin from "./pages/TestLogin";
 import ProtectedRoute from "./services/ProtectedRoute";
+
 
 const App = () => {
   const theme = createMuiTheme();
@@ -26,6 +28,7 @@ const App = () => {
               }
             />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/explore/:categoryName" element={<Explore />} />
             <Route
               path="/testlogin"

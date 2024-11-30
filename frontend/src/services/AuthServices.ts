@@ -49,6 +49,20 @@ export function useAuthService(): AuthServiceProps {
       setIsLoggedIn(true);
 
       getUserDetails();
+      return response;
+    } catch (error: any) {
+      return error;
+    }
+  };
+  const register = async (username: string, password: string) => {
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/register/", {
+        username,
+        password,
+      }, {withCredentials: true}
+    );
+      return response;
+
     } catch (error: any) {
       return error;
     }
@@ -82,5 +96,5 @@ export function useAuthService(): AuthServiceProps {
   }
 
 
-  return { login, isLoggedIn, logout, refreshAccessToken };
+  return { login, isLoggedIn, logout, refreshAccessToken, register };
 }
