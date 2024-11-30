@@ -48,8 +48,11 @@ const MessageInterface = (props: ServerChannelProps) => {
                 console.log(error);
             }
         },
-        onClose: () => {
-            console.log("closed!");
+        onClose: (event: CloseEvent) => {
+            if (event.code == 4001) {
+                console.log("Authentication Error!");
+            }
+            console.log("Close");
         },
         onError: () => {
             console.log("error");
@@ -105,6 +108,7 @@ const MessageInterface = (props: ServerChannelProps) => {
                 <Box sx={{overflow: "hidden", p: 0, height: `calc(100vh - 100px)`}}>
                     <Scroll>
                         <List sx={{width: "100%", bgcolor: "background.paper"}}>
+                            
                             {newMessage.map((msg: Message, index: number) => {
                                 return (
                                     <ListItem key={index} alignItems="flex-start">
