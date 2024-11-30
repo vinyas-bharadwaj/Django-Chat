@@ -30,6 +30,7 @@ class JWTAuthMiddleWare:
         cookies = {cookie.split("=")[0]: cookie.split("=")[1] for cookie in cookies_str.split("; ")}
         access_token = cookies.get("access_token")
 
+
         scope["token"] = access_token
         scope["user"] = await get_user(scope)
 

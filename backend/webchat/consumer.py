@@ -14,12 +14,12 @@ class WebChatConsumer(JsonWebsocketConsumer):
         self.user = None
 
     def connect(self):
-        # self.user = self.scope["user"]
+        self.user = self.scope["user"]
 
-        # self.accept()
-        
-        # if not self.user.is_authenticated:
-        #     self.close(code=4001)
+        self.accept()
+
+        if not self.user.is_authenticated:
+            self.close(code=4001)
 
         self.channel_id = self.scope["url_route"]["kwargs"]["channelId"]
 
@@ -32,9 +32,13 @@ class WebChatConsumer(JsonWebsocketConsumer):
         sender = self.user
         message = content["message"]
 
-        conversation, created = Conversation.objects.get_or_create(channel_id=channel_id)
+        conversation, created = Conversation.objects.get_or_create(
+            channel_id=channel_id
+        )
 
-        new_message = Message.objects.create(conversation=conversation, sender=sender, content=message)
+        new_message = Message.objects.create(
+            conversation=conversation, sender=sender, content=message
+        )
 
         async_to_sync(self.channel_layer.group_send)(
             self.channel_id,
@@ -53,5 +57,7 @@ class WebChatConsumer(JsonWebsocketConsumer):
         self.send_json(event)
 
     def disconnect(self, close_code):
-        async_to_sync(self.channel_layer.group_discard)(self.channel_id, self.channel_name)
+        async_to_sync(self.channel_layer.group_discard)(
+            self.channel_id, self.channel_name
+        )
         super().disconnect(close_code)

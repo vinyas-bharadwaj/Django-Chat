@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
@@ -10,6 +10,16 @@ from django.conf import settings
 
 
 # Create your views here.
+class LogoutAPIView(APIView):
+    def post(self, request, format=None):
+        response = Response("Logged out successfully!")
+        
+        response.set_cookie("refresh_token", "", expires=0)
+        response.set_cookie("access_token", "", expires=0)
+        
+        return response
+
+
 class AccountViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]
 
@@ -32,7 +42,7 @@ class JWTSetCookieMixin:
                 httponly=True,
                 samesite=settings.SIMPLE_JWT['JWT_COOKIE_SAMESITE']
             )
-            
+
         if response.data.get("access"):
             response.set_cookie(
                 settings.SIMPLE_JWT["ACCESS_TOKEN_NAME"],
@@ -41,7 +51,7 @@ class JWTSetCookieMixin:
                 httponly=True,
                 samesite=settings.SIMPLE_JWT['JWT_COOKIE_SAMESITE']
             )
-            del response.data['access']
+            # del response.data['access']
         
         return super().finalize_response(request, response, *args, **kwargs)
     

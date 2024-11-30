@@ -24,7 +24,7 @@ from rest_framework.routers import DefaultRouter
 from server.views import ServerListViewSet, CategoryListViewSet
 from webchat.consumer import WebChatConsumer
 from webchat.views import MessageViewSet
-from account.views import AccountViewSet, JWTCookieTokenObtainPairView, JWTCookieTokenRefreshView 
+from account.views import AccountViewSet, JWTCookieTokenObtainPairView, JWTCookieTokenRefreshView, LogoutAPIView
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -44,10 +44,11 @@ urlpatterns = [
     path("api/docs/schema/ui", SpectacularSwaggerView.as_view()),
     path("api/token/", JWTCookieTokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", JWTCookieTokenRefreshView.as_view(), name="token_refresh"),
+    path("api/logout/", LogoutAPIView.as_view(), name="logout"),
 ] + router.urls
 
 websocket_urlpatterns = [
-    path("<str:serverId>/<str:channelId>/", WebChatConsumer.as_asgi()),
+    path("<str:serverId>/<str:channelId>", WebChatConsumer.as_asgi()),
 ]
 
 if settings.DEBUG:
